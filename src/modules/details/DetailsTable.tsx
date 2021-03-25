@@ -1,9 +1,10 @@
 import * as React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid, GridPageChangeParams } from "@material-ui/data-grid";
+
 import CommonError from "common/components/CommonError";
 import { BIDS_PAGINATION_OPTIONS } from "common/reactQuery";
-import useBids from "services/useBids";
+import { useBids } from "services/useBids";
 
 import columns from "./detailsColumns";
 

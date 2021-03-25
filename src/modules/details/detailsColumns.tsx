@@ -8,12 +8,6 @@ const columns: GridColumns = [
     flex: 1,
   },
   {
-    headerName: "Amount",
-    field: "amount",
-    type: "number",
-    flex: 1,
-  },
-  {
     headerName: "Created At",
     field: "created",
     type: "dateTime",
@@ -21,6 +15,12 @@ const columns: GridColumns = [
     renderCell: (params: GridCellParams) => {
       return <span>{formatDate(params.value as string, FULL_FORMAT)}</span>;
     },
+  },
+  {
+    headerName: "Amount",
+    field: "amount",
+    type: "number",
+    flex: 1,
   },
 ];
 

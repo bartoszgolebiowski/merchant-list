@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 
 import { MERCHANT_QUERY_KEY, MERCHANT_STALE_TIME } from "common/reactQuery";
@@ -9,20 +9,72 @@ import {
   setMerchantPageSize,
 } from "store/dashboard";
 
-const fetchMerchants = async (page: number, size: number) => {
+import { MerchantFormValues } from "types";
+
+const noop = () => {};
+
+const postMerchant = async (values: MerchantFormValues) => {
+  await axios.post(
+    `https://i-love-react-and-javascript/api/v1/merchant`,
+    values
+  );
+  return Promise.resolve();
+};
+
+const deleteMerchant = async (id: string) => {
+  await axios.delete(
+    `https://i-love-react-and-javascript/api/v1/merchant/${id}`
+  );
+  return Promise.resolve();
+};
+
+const getMerchants = async (page: number, size: number) => {
   const { data } = await axios.get(
     `https://i-love-react-and-javascript/api/v1/merchant?page=${page}&size=${size}`
   );
   return data;
 };
 
-const useMerchants = () => {
+export const useMerchantMutationPost = (onSuccess = noop, onError = noop) => {
+  const { page, size } = useDashboardStore();
+  const queryCache = useQueryClient();
+  const { mutateAsync } = useMutation(
+    (values: MerchantFormValues) => postMerchant(values),
+    {
+      onSuccess: () => {
+        queryCache.invalidateQueries([MERCHANT_QUERY_KEY, page, size]);
+        onSuccess();
+      },
+      onError: () => {
+        onError();
+      },
+    }
+  );
+  return mutateAsync;
+};
+
+export const useMerchantMutationDelete = (onSuccess = noop, onError = noop) => {
+  const { page, size } = useDashboardStore();
+  const queryCache = useQueryClient();
+  const { mutateAsync } = useMutation((id: string) => deleteMerchant(id), {
+    onSuccess: () => {
+      queryCache.invalidateQueries([MERCHANT_QUERY_KEY, page, size]);
+      onSuccess();
+    },
+    onError: () => {
+      onError();
+    },
+  });
+  return mutateAsync;
+};
+
+export const useMerchants = () => {
   const { page, size } = useDashboardStore();
   const dispatch = useDashboardDispatchStore();
 
   const { status, data } = useQuery(
     [MERCHANT_QUERY_KEY, page, size],
-    () => fetchMerchants(page, size),
+    () => getMerchants(page, size),
     { keepPreviousData: true, staleTime: MERCHANT_STALE_TIME }
   );
 
@@ -46,5 +98,3 @@ const useMerchants = () => {
     setSize: handleSetSize,
   };
 };
-
-export default useMerchants;

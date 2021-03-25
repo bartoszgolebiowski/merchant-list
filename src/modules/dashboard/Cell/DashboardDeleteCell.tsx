@@ -1,9 +1,10 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import useNotification from "common/useNotification";
 import useToggle from "common/useToggle";
-import { useMerchantMutationDelete } from "services/useMerchantMutation";
+import { useMerchantMutationDelete } from "services/useMerchants";
 import DashboardDeleteDialog from "../DashboardDeleteDialog";
 
 type DashboardDeleteCellProps = {
@@ -11,7 +12,11 @@ type DashboardDeleteCellProps = {
 };
 
 const useStyles = makeStyles((theme: Theme) => ({
-  delete: { color: theme.palette.primary.light, cursor: "pointer" },
+  delete: {
+    color: theme.palette.primary.light,
+    cursor: "pointer",
+    lineHeight: 0,
+  },
 }));
 
 const DashboardDeleteCell: React.FC<DashboardDeleteCellProps> = (props) => {
@@ -39,7 +44,16 @@ const DashboardDeleteCell: React.FC<DashboardDeleteCellProps> = (props) => {
         onClose={handleToggle}
         onDelete={handleSubmit}
       />
-      <DeleteIcon className={c.delete} onClick={onToggle} />
+      <Tooltip title="Delete">
+        <span
+          onClick={onToggle}
+          aria-label={`delete-${id}`}
+          role="button"
+          className={c.delete}
+        >
+          <DeleteIcon />
+        </span>
+      </Tooltip>
     </>
   );
 };

@@ -1,14 +1,14 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
+import Tooltip from "@material-ui/core/Tooltip";
 
-import useMerchants from "services/useMerchants";
-import { useMerchantMutationPost } from "services/useMerchantMutation";
+import { useMerchantMutationPost, useMerchants } from "services/useMerchants";
 import CommonDrawer from "common/components/CommonDrawer";
 import useNotification from "common/useNotification";
 import useToggle from "common/useToggle";
 
-import MerchantForm from "./MerchantForm";
+import MerchantForm from "./Form/MerchantForm";
 import { MerchantFormValues } from "types";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -41,9 +41,11 @@ const DashboardCreate = () => {
       <CommonDrawer {...toggle}>
         <MerchantForm onSubmit={handleSubmit} onClose={handleToggle} />
       </CommonDrawer>
-      <IconButton aria-label="create" onClick={handleToggle}>
-        <AddIcon className={c.create} />
-      </IconButton>
+      <Tooltip title="Create">
+        <IconButton aria-label="create" onClick={handleToggle}>
+          <AddIcon className={c.create} />
+        </IconButton>
+      </Tooltip>
     </>
   ) : null;
 };

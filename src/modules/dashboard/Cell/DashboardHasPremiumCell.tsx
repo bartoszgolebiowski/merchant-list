@@ -1,4 +1,5 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
 import CheckIcon from "@material-ui/icons/Check";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
@@ -16,9 +17,13 @@ const DashboardHasPremium: React.FC<DashboardHasPremiumProps> = (props) => {
   const c = useStyles();
 
   return hasPremium ? (
-    <CheckIcon className={c.premium} />
+    <Tooltip title="Premium">
+      <CheckIcon className={c.premium} />
+    </Tooltip>
   ) : (
-    <HighlightOffIcon className={c.noPremium} />
+    <Tooltip title="No premium">
+      <HighlightOffIcon className={c.noPremium} />
+    </Tooltip>
   );
 };
 

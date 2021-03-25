@@ -1,12 +1,13 @@
 import * as React from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import EditIcon from "@material-ui/icons/Edit";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import useNotification from "common/useNotification";
 import useToggle from "common/useToggle";
 import CommonDrawer from "common/components/CommonDrawer";
-import { useMerchantMutationPost } from "services/useMerchantMutation";
-import MerchantForm from "../MerchantForm";
+import { useMerchantMutationPost } from "services/useMerchants";
+import MerchantForm from "../Form/MerchantForm";
 
 import { Merchant, MerchantFormValues } from "types";
 
@@ -15,7 +16,11 @@ type DashboardEditCellProps = {
 };
 
 const useStyles = makeStyles((theme: Theme) => ({
-  edit: { color: theme.palette.primary.light, cursor: "pointer" },
+  edit: {
+    color: theme.palette.primary.light,
+    cursor: "pointer",
+    lineHeight: 0,
+  },
 }));
 
 const DashboardEditCell: React.FC<DashboardEditCellProps> = (props) => {
@@ -37,6 +42,7 @@ const DashboardEditCell: React.FC<DashboardEditCellProps> = (props) => {
   const handleToggle = () => onToggle();
   const handleSubmit = (values: MerchantFormValues) => mutate(values);
 
+  console.log(row)
   return (
     <>
       <CommonDrawer {...toggle}>
@@ -44,10 +50,19 @@ const DashboardEditCell: React.FC<DashboardEditCellProps> = (props) => {
           onSubmit={handleSubmit}
           onClose={handleToggle}
           title="Edit"
-          defaultValues={row}
+          initialValues={row}
         />
       </CommonDrawer>
-      <EditIcon className={c.edit} onClick={handleToggle} />
+      <Tooltip title="Edit">
+        <span
+          onClick={handleToggle}
+          aria-label={`edit-${row.id}`}
+          role="button"
+          className={c.edit}
+        >
+          <EditIcon />
+        </span>
+      </Tooltip>
     </>
   );
 };

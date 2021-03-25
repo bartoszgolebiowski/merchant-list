@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import InfoIcon from "@material-ui/icons/Info";
+import Tooltip from "@material-ui/core/Tooltip";
 
 type DashboardBidCellProps = {
   merchantId: string;
@@ -16,9 +17,16 @@ const DashboardBidCell: React.FC<DashboardBidCellProps> = (props) => {
   const c = useStyles();
 
   return (
-    <Link to={`/details/${merchantId}`} className={c.link}>
-      <InfoIcon className={c.info} />
-    </Link>
+    <Tooltip title="Details">
+      <Link
+        to={`/details/${merchantId}`}
+        className={c.link}
+        aria-label={`bids-${merchantId}`}
+        role="button"
+      >
+        <InfoIcon className={c.info} />
+      </Link>
+    </Tooltip>
   );
 };
 

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { MERCHANT_PAGINATION_OPTIONS } from "common/reactQuery";
 import CommonError from "common/components/CommonError";
-import useMerchants from "services/useMerchants";
+import { useMerchants } from "services/useMerchants";
 
 import columns from "./dashboardColumns";
 

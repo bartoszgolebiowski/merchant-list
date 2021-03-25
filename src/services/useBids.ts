@@ -8,20 +8,20 @@ import {
   BIDS_STALE_TIME,
 } from "common/reactQuery";
 
-const fetchBids = async (id: string, page: number, size: number) => {
+const getBids = async (id: string, page: number, size: number) => {
   const { data } = await axios.get(
     `https://i-love-react-and-javascript/api/v1/merchant/${id}/bids?page=${page}&size=${size}`
   );
   return data;
 };
 
-const useBids = (id: string) => {
+export const useBids = (id: string) => {
   const [size, setSize] = React.useState(BIDS_PAGE_SIZE);
   const [page, setPage] = React.useState(0);
 
   const { status, data } = useQuery(
     [BIDS_QUERY_KEY, page, size],
-    () => fetchBids(id, page, size),
+    () => getBids(id, page, size),
     { keepPreviousData: true, staleTime: BIDS_STALE_TIME }
   );
 
@@ -45,5 +45,3 @@ const useBids = (id: string) => {
     setSize: handleSetSize,
   };
 };
-
-export default useBids;
