@@ -42,7 +42,6 @@ const DashboardEditCell: React.FC<DashboardEditCellProps> = (props) => {
   const handleToggle = () => onToggle();
   const handleSubmit = (values: MerchantFormValues) => mutate(values);
 
-  console.log(row)
   return (
     <>
       <CommonDrawer {...toggle}>

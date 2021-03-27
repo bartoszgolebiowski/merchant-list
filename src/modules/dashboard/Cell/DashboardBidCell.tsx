@@ -19,12 +19,13 @@ const DashboardBidCell: React.FC<DashboardBidCellProps> = (props) => {
   return (
     <Tooltip title="Details">
       <Link
+        data-testid={`bids-${merchantId}`}
         to={`/details/${merchantId}`}
         className={c.link}
         aria-label={`bids-${merchantId}`}
         role="button"
       >
-        <InfoIcon className={c.info} />
+        <InfoIcon className={c.info} aria-label={`bids-icon-${merchantId}`} />
       </Link>
     </Tooltip>
   );

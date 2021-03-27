@@ -9,7 +9,7 @@ const BasicFormikErrorMessage: React.FC<BasicFormikErrorMessageProps> = (
   return (
     <ErrorMessage {...props}>
       {(error) => (
-        <Typography paragraph color="error">
+        <Typography paragraph color="error" role="alert" aria-label={props.name}>
           {error}
         </Typography>
       )}

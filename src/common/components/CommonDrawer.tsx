@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "30vw",
     },
     padding: "1rem",
-    height: "100%",
   },
 }));
 

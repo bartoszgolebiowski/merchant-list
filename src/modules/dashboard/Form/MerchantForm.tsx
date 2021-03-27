@@ -27,8 +27,14 @@ type MerchantFormProps = {
 
 const useStyles = makeStyles((theme: Theme) => ({
   formContainer: {
-    "& > div": {
-      padding: "1rem 0",
+    flex: "1",
+    display: "flex",
+    flexDirection: "column",
+    maxHeight: "80vh",
+    padding: "0 0 2rem 0",
+    overflowY: "scroll",
+    [theme.breakpoints.up("md")]: {
+      maxHeight: "85vh",
     },
   },
 }));
@@ -55,13 +61,8 @@ const MerchantForm: React.FC<MerchantFormProps> = (props) => {
     >
       <>
         <MerchantFormHeader title={title} onClose={onClose} />
-        <Box
-          display="flex"
-          flexDirection="column"
-          flex="1"
-          className={c.formContainer}
-        >
-          <BasicFormikInput name="firstname" label="FirstName (*)">
+        <Box className={c.formContainer}>
+          <BasicFormikInput name="firstname" label="First Name (*)">
             <BasicFormikErrorMessage name="firstname" />
           </BasicFormikInput>
           <BasicFormikInput name="lastname" label="Last Name (*)">

@@ -44,7 +44,7 @@ const DetailsTable: React.FC<DetailsTableProps> = (props) => {
         onPageChange={handlePageChange}
         onPageSizeChange={handleSizeChange}
         rowsPerPageOptions={BIDS_PAGINATION_OPTIONS}
-        rowCount={data?.meta.total || 0}
+        rowCount={data?.meta?.total || 0}
         disableSelectionOnClick
         pageSize={size}
         paginationMode="server"

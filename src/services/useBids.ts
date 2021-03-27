@@ -8,9 +8,11 @@ import {
   BIDS_STALE_TIME,
 } from "common/reactQuery";
 
+import { SERVER_URL } from "./utils";
+
 const getBids = async (id: string, page: number, size: number) => {
   const { data } = await axios.get(
-    `https://i-love-react-and-javascript/api/v1/merchant/${id}/bids?page=${page}&size=${size}`
+    `${SERVER_URL}/api/v1/merchant/${id}/bids?page=${page}&size=${size}`
   );
   return data;
 };

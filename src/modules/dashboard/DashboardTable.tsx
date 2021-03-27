@@ -1,8 +1,8 @@
 import { DataGrid, GridPageChangeParams } from "@material-ui/data-grid";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { MERCHANT_PAGINATION_OPTIONS } from "common/reactQuery";
 import CommonError from "common/components/CommonError";
+import { MERCHANT_PAGINATION_OPTIONS } from "common/reactQuery";
 import { useMerchants } from "services/useMerchants";
 
 import columns from "./dashboardColumns";
@@ -38,10 +38,11 @@ const DashboardTable = () => {
         onPageChange={handlePageChange}
         onPageSizeChange={handleSizeChange}
         rowsPerPageOptions={MERCHANT_PAGINATION_OPTIONS}
-        rowCount={data?.meta.total || 0}
+        rowCount={data?.meta?.total || 0}
         disableSelectionOnClick
         pageSize={size}
         paginationMode="server"
+        columnBuffer={columns.length}
         pagination
       />
     </div>

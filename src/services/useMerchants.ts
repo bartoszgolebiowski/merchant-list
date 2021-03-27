@@ -9,28 +9,25 @@ import {
   setMerchantPageSize,
 } from "store/dashboard";
 
+import { SERVER_URL } from "./utils";
+
 import { MerchantFormValues } from "types";
 
 const noop = () => {};
 
 const postMerchant = async (values: MerchantFormValues) => {
-  await axios.post(
-    `https://i-love-react-and-javascript/api/v1/merchant`,
-    values
-  );
+  await axios.post(`${SERVER_URL}/api/v1/merchant`, values);
   return Promise.resolve();
 };
 
 const deleteMerchant = async (id: string) => {
-  await axios.delete(
-    `https://i-love-react-and-javascript/api/v1/merchant/${id}`
-  );
+  await axios.delete(`${SERVER_URL}/api/v1/merchant/${id}`);
   return Promise.resolve();
 };
 
 const getMerchants = async (page: number, size: number) => {
   const { data } = await axios.get(
-    `https://i-love-react-and-javascript/api/v1/merchant?page=${page}&size=${size}`
+    `${SERVER_URL}/api/v1/merchant?page=${page}&size=${size}`
   );
   return data;
 };

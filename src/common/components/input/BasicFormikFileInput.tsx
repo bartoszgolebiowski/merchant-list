@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   input: {
     display: "flex",
     flexDirection: "column",
-    padding: "1rem 0",
+    padding: "1rem 0 0 0",
   },
   progress: {
     color: theme.palette.success.dark,

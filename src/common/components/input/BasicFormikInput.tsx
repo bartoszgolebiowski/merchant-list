@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   input: {
     display: "flex",
     flexDirection: "column",
-    padding: "1rem 0",
+    padding: "1rem 0 0 0",
   },
 }));
 
