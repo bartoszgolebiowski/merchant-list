@@ -32,7 +32,7 @@ describe("Details", () => {
         <ToastContainer {...toastConfig} />
       </MemoryRouter>
     );
-    await screen.findByText("Oops! Somethink went wrong.");
+    await screen.findByText("Oops! Something went wrong.");
   });
 
   it("Loading", async () => {

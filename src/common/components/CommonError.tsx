@@ -18,7 +18,7 @@ const CommonError = () => {
   return (
     <Container className={classes.error}>
       <Typography align="center" variant="h2">
-        Oops! Somethink went wrong.
+        Oops! Something went wrong.
       </Typography>
       <Typography variant="h5">
         <a href=".">Refresh</a>

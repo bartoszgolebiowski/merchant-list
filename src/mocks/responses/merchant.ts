@@ -9,8 +9,9 @@ export const generateMerchants = (quantity: number) => {
       lastname: faker.name.lastName(),
       avatarUrl: faker.image.people(),
       email: faker.internet.email(),
-      phone: faker.phone.phoneNumber('###-###-###'),
-      hasPremium: faker.random.boolean(),
+      phone: faker.phone.phoneNumber("###-###-###"),
+      //@ts-ignore
+      hasPremium: faker.datatype.boolean(),
     };
   });
 };

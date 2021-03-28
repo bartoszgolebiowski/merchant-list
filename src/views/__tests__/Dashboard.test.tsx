@@ -38,7 +38,7 @@ describe("Dashboard", () => {
         <ToastContainer {...toastConfig} />
       </>
     );
-    await screen.findByText("Oops! Somethink went wrong.");
+    await screen.findByText("Oops! Something went wrong.");
   });
 
   it("Loading", async () => {
