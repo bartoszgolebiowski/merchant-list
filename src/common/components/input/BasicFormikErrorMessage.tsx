@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import { ErrorMessage, ErrorMessageProps } from "formik";
 
 interface BasicFormikErrorMessageProps extends ErrorMessageProps {}
@@ -9,7 +9,12 @@ const BasicFormikErrorMessage: React.FC<BasicFormikErrorMessageProps> = (
   return (
     <ErrorMessage {...props}>
       {(error) => (
-        <Typography paragraph color="error" role="alert" aria-label={props.name}>
+        <Typography
+          paragraph
+          color="error"
+          role="alert"
+          aria-label={props.name}
+        >
           {error}
         </Typography>
       )}
