@@ -48,7 +48,7 @@ const MerchantForm: React.FC<MerchantFormProps> = (props) => {
     onSubmit,
     onClose,
   } = props;
-  const c = useStyles();
+  const classes = useStyles();
 
   return (
     <Formik<MerchantFormValues>
@@ -61,7 +61,7 @@ const MerchantForm: React.FC<MerchantFormProps> = (props) => {
     >
       <>
         <MerchantFormHeader title={title} onClose={onClose} />
-        <Box className={c.formContainer}>
+        <Box className={classes.formContainer}>
           <BasicFormikInput name="firstname" label="First Name (*)">
             <BasicFormikErrorMessage name="firstname" />
           </BasicFormikInput>

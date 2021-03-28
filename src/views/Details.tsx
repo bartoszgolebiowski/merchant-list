@@ -15,10 +15,10 @@ const useStyles = makeStyles(() => ({
 
 const Details = () => {
   const { id } = useParams<URLParams>();
-  const c = useStyles();
+  const classes = useStyles();
 
   return (
-    <Container className={c.detailsContainer}>
+    <Container className={classes.detailsContainer}>
       <DetailsBack />
       <DetailsTable id={id} />
     </Container>

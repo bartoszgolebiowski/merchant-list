@@ -17,11 +17,11 @@ const useStyles = makeStyles(() => ({
 
 const BasicFormikInput: React.FC<BasicFormikInputProps> = (props) => {
   const { name, label, children } = props;
-  const c = useStyles();
+  const classes = useStyles();
   const [field] = useField(name);
 
   return (
-    <label htmlFor={name} className={c.input}>
+    <label htmlFor={name} className={classes.input}>
       {label}
       <Input id={name} {...props} {...field} />
       {children}

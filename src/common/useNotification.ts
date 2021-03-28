@@ -1,11 +1,10 @@
-import { useSnackbar } from "notistack";
+import { toast } from "react-toastify";
 
 const useNotification = () => {
-  const { enqueueSnackbar } = useSnackbar();
   const errorNotification = (message = "Fail") =>
-    enqueueSnackbar(message, { variant: "error" });
+    toast(message, { type: "error" });
   const successNotification = (message = "Success") =>
-    enqueueSnackbar(message, { variant: "success" });
+    toast(message, { type: "success" });
 
   return {
     errorNotification,

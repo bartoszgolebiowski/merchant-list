@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
 
 const MerchantFormHeader: React.FC<MerchantFormProps> = (props) => {
   const { title, onClose } = props;
-  const c = useStyles();
+  const classes = useStyles();
 
   return (
     <Box display="flex" justifyContent="space-between">
@@ -23,7 +23,7 @@ const MerchantFormHeader: React.FC<MerchantFormProps> = (props) => {
       <Box
         component="span"
         onClick={onClose}
-        className={c.closeIcon}
+        className={classes.closeIcon}
         role="button"
         aria-label="close-form"
       >

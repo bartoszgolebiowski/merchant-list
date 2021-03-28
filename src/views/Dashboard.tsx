@@ -8,10 +8,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Dashboard = () => {
-  const c = useStyles();
+  const classes = useStyles();
 
   return (
-    <Container className={c.dashboardContainer}>
+    <Container className={classes.dashboardContainer}>
       <DashboardCreate />
       <DashboardTable />
     </Container>

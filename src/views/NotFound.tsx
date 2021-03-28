@@ -15,10 +15,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 const NotFound = () => {
-  const c = useStyles();
+  const classes = useStyles();
 
   return (
-    <Container className={c.notFound}>
+    <Container className={classes.notFound}>
       <Typography align="center" variant="h2">
         Oops! This page does not exist.
       </Typography>

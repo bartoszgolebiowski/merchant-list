@@ -13,10 +13,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 const CommonError = () => {
-  const c = useStyles();
+  const classes = useStyles();
 
   return (
-    <Container className={c.error}>
+    <Container className={classes.error}>
       <Typography align="center" variant="h2">
         Oops! Somethink went wrong.
       </Typography>

@@ -14,15 +14,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const DashboardHasPremium: React.FC<DashboardHasPremiumProps> = (props) => {
   const { hasPremium } = props;
-  const c = useStyles();
+  const classes = useStyles();
 
   return hasPremium ? (
     <Tooltip title="Premium">
-      <CheckIcon className={c.premium} />
+      <CheckIcon className={classes.premium} />
     </Tooltip>
   ) : (
     <Tooltip title="No premium">
-      <HighlightOffIcon className={c.noPremium} />
+      <HighlightOffIcon className={classes.noPremium} />
     </Tooltip>
   );
 };

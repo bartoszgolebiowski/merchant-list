@@ -1,18 +1,20 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import { SnackbarProvider } from "notistack";
+import { ToastContainer } from "react-toastify";
+
 import { rest } from "msw";
 import { server } from "mocks/server";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import {
   calculateMetaMerchant,
   generateMerchants,
 } from "mocks/responses/merchant";
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 
 import Dashboard from "views/Dashboard";
 import { DashboardProvider } from "store/dashboard";
 import { SERVER_URL } from "services/utils";
 import { MERCHANT_PAGE_SIZE } from "common/reactQuery";
+import { toastConfig } from "common/components/config";
 
 const merchants = generateMerchants(20);
 const queryCache = new QueryClient({
@@ -27,13 +29,14 @@ describe("Dashboard", () => {
       })
     );
     render(
-      <SnackbarProvider maxSnack={3}>
+      <>
         <QueryClientProvider client={queryCache}>
           <DashboardProvider page={0} size={MERCHANT_PAGE_SIZE}>
             <Dashboard />
           </DashboardProvider>
         </QueryClientProvider>
-      </SnackbarProvider>
+        <ToastContainer {...toastConfig} />
+      </>
     );
     await screen.findByText("Oops! Somethink went wrong.");
   });
@@ -52,13 +55,14 @@ describe("Dashboard", () => {
       })
     );
     render(
-      <SnackbarProvider maxSnack={3}>
+      <>
         <QueryClientProvider client={queryCache}>
           <DashboardProvider page={0} size={MERCHANT_PAGE_SIZE}>
             <Dashboard />
           </DashboardProvider>
         </QueryClientProvider>
-      </SnackbarProvider>
+        <ToastContainer {...toastConfig} />
+      </>
     );
 
     await screen.findByRole("progressbar");
@@ -70,13 +74,14 @@ describe("Dashboard", () => {
     beforeEach(() => {
       queryCache.clear();
       return render(
-        <SnackbarProvider maxSnack={3}>
+        <>
           <QueryClientProvider client={queryCache}>
             <DashboardProvider page={0} size={MERCHANT_PAGE_SIZE}>
               <Dashboard />
             </DashboardProvider>
           </QueryClientProvider>
-        </SnackbarProvider>
+          <ToastContainer {...toastConfig} />
+        </>
       );
     });
 

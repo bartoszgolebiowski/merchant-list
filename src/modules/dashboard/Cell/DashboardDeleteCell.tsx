@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const DashboardDeleteCell: React.FC<DashboardDeleteCellProps> = (props) => {
   const { id } = props;
   const { open, onToggle } = useToggle();
-  const c = useStyles();
+  const classes = useStyles();
   const { errorNotification, successNotification } = useNotification();
 
   const onSuccess = () => {
@@ -49,7 +49,7 @@ const DashboardDeleteCell: React.FC<DashboardDeleteCellProps> = (props) => {
           onClick={onToggle}
           aria-label={`delete-${id}`}
           role="button"
-          className={c.delete}
+          className={classes.delete}
         >
           <DeleteIcon />
         </span>

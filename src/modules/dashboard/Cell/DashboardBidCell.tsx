@@ -14,18 +14,18 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const DashboardBidCell: React.FC<DashboardBidCellProps> = (props) => {
   const { merchantId } = props;
-  const c = useStyles();
+  const classes = useStyles();
 
   return (
     <Tooltip title="Details">
       <Link
         data-testid={`bids-${merchantId}`}
         to={`/details/${merchantId}`}
-        className={c.link}
+        className={classes.link}
         aria-label={`bids-${merchantId}`}
         role="button"
       >
-        <InfoIcon className={c.info} aria-label={`bids-icon-${merchantId}`} />
+        <InfoIcon className={classes.info} aria-label={`bids-icon-${merchantId}`} />
       </Link>
     </Tooltip>
   );

@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
 
 const DashboardTable = () => {
   const { status, data, page, size, setPage, setSize } = useMerchants();
-  const c = useStyles();
+  const classes = useStyles();
 
   const handlePageChange = (params: GridPageChangeParams) => {
     setPage(params.page);
@@ -29,7 +29,7 @@ const DashboardTable = () => {
   if (status === "error") return <CommonError />;
 
   return (
-    <div className={c.container}>
+    <div className={classes.container}>
       <DataGrid
         columns={columns}
         rows={data?.results || []}

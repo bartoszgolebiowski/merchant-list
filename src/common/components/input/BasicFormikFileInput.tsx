@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const BasicFormikFileInput: React.FC<BasicFormikInputProps> = (props) => {
   const { name, label, children } = props;
-  const c = useStyles();
+  const classes = useStyles();
   const [loading, setLoading] = React.useState(false);
   const [, , helper] = useField(name);
 
@@ -40,7 +40,7 @@ const BasicFormikFileInput: React.FC<BasicFormikInputProps> = (props) => {
   };
 
   return (
-    <label htmlFor={name} className={c.input}>
+    <label htmlFor={name} className={classes.input}>
       {label}
       <Input
         id={name}
@@ -49,7 +49,7 @@ const BasicFormikFileInput: React.FC<BasicFormikInputProps> = (props) => {
         onChange={handleChangeFile}
         type="file"
         endAdornment={
-          loading && <CircularProgress size={24} className={c.progress} />
+          loading && <CircularProgress size={24} className={classes.progress} />
         }
       />
 

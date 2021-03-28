@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const CommonDrawer: React.FC<CommonDrawerProps> = (props) => {
   const { anchor = "right", children, ...rest } = props;
-  const c = useStyles();
+  const classes = useStyles();
 
   return (
     <SwipeableDrawer anchor={anchor} {...rest}>
-      <div className={c.drawer}>{children}</div>
+      <div className={classes.drawer}>{children}</div>
     </SwipeableDrawer>
   );
 };

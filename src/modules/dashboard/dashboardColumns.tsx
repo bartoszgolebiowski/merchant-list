@@ -13,7 +13,6 @@ const columns: GridColumns = [
     field: "avatarUrl",
     width: 110,
     renderCell: (params: GridCellParams) => {
-      console.log("czecze");
       return (
         <CommonAvatar
           alt={`${params.row.firstname} ${params.row.lastname}`}

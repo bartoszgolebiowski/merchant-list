@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const DetailsBack = () => {
-  const c = useStyles();
+  const classes = useStyles();
   const history = useHistory();
 
   const handleBack = () => {
@@ -19,7 +19,7 @@ const DetailsBack = () => {
   return (
     <Tooltip title="Back">
       <IconButton aria-label="back" onClick={handleBack}>
-        <ArrowBackIcon className={c.back} />
+        <ArrowBackIcon className={classes.back} />
       </IconButton>
     </Tooltip>
   );

@@ -1,14 +1,15 @@
-import { QueryClient, QueryClientProvider } from "react-query";
-import { SnackbarProvider } from "notistack";
-import { rest } from "msw";
 import { MemoryRouter } from "react-router";
-import { server } from "mocks/server";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContainer } from "react-toastify";
 
+import { rest } from "msw";
+import { server } from "mocks/server";
 import { render, screen, waitFor } from "@testing-library/react";
+import { calculateMetaBids, generateBids } from "mocks/responses/bids";
 
 import Details from "views/Details";
 import { SERVER_URL } from "services/utils";
-import { calculateMetaBids, generateBids } from "mocks/responses/bids";
+import { toastConfig } from "common/components/config";
 
 const bids = generateBids(1, 20);
 
@@ -25,11 +26,10 @@ describe("Details", () => {
     );
     render(
       <MemoryRouter initialEntries={["details/1"]}>
-        <SnackbarProvider maxSnack={3}>
-          <QueryClientProvider client={queryCache}>
-            <Details />
-          </QueryClientProvider>
-        </SnackbarProvider>
+        <QueryClientProvider client={queryCache}>
+          <Details />
+        </QueryClientProvider>
+        <ToastContainer {...toastConfig} />
       </MemoryRouter>
     );
     await screen.findByText("Oops! Somethink went wrong.");
@@ -50,11 +50,10 @@ describe("Details", () => {
     );
     render(
       <MemoryRouter initialEntries={["details/1"]}>
-        <SnackbarProvider maxSnack={3}>
-          <QueryClientProvider client={queryCache}>
-            <Details />
-          </QueryClientProvider>
-        </SnackbarProvider>
+        <QueryClientProvider client={queryCache}>
+          <Details />
+        </QueryClientProvider>
+        <ToastContainer {...toastConfig} />
       </MemoryRouter>
     );
 
@@ -68,11 +67,10 @@ describe("Details", () => {
       queryCache.clear();
       return render(
         <MemoryRouter initialEntries={["details/1"]}>
-          <SnackbarProvider maxSnack={3}>
-            <QueryClientProvider client={queryCache}>
-              <Details />
-            </QueryClientProvider>
-          </SnackbarProvider>
+          <QueryClientProvider client={queryCache}>
+            <Details />
+          </QueryClientProvider>
+          <ToastContainer {...toastConfig} />
         </MemoryRouter>
       );
     });

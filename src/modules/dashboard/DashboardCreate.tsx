@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const DashboardCreate = () => {
   const { onToggle, ...toggle } = useToggle();
-  const c = useStyles();
+  const classes = useStyles();
   const { errorNotification, successNotification } = useNotification();
   const { status } = useMerchants();
 
@@ -43,7 +43,7 @@ const DashboardCreate = () => {
       </CommonDrawer>
       <Tooltip title="Create">
         <IconButton aria-label="create" onClick={handleToggle}>
-          <AddIcon className={c.create} />
+          <AddIcon className={classes.create} />
         </IconButton>
       </Tooltip>
     </>

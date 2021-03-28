@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
 const DetailsTable: React.FC<DetailsTableProps> = (props) => {
   const { id } = props;
   const { status, data, page, size, setPage, setSize } = useBids(id);
-  const c = useStyles();
+  const classes = useStyles();
 
   const handlePageChange = (params: GridPageChangeParams) => {
     setPage(params.page);
@@ -35,7 +35,7 @@ const DetailsTable: React.FC<DetailsTableProps> = (props) => {
   if (status === "error") return <CommonError />;
 
   return (
-    <div className={c.container}>
+    <div className={classes.container}>
       <DataGrid
         columns={columns}
         rows={data?.results || []}

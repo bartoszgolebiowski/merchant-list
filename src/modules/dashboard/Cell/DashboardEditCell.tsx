@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const DashboardEditCell: React.FC<DashboardEditCellProps> = (props) => {
   const { row } = props;
   const { onToggle, ...toggle } = useToggle();
-  const c = useStyles();
+  const classes = useStyles();
   const { errorNotification, successNotification } = useNotification();
 
   const onSuccess = () => {
@@ -57,7 +57,7 @@ const DashboardEditCell: React.FC<DashboardEditCellProps> = (props) => {
           onClick={handleToggle}
           aria-label={`edit-${row.id}`}
           role="button"
-          className={c.edit}
+          className={classes.edit}
         >
           <EditIcon />
         </span>
